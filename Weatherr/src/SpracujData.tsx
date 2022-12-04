@@ -3,6 +3,6 @@ import './App.css'
 
 export default function SpracujData() 
 {
-    const [stupne, setStupne] = useState(15);
+   /// const [stupne, setStupne] = useState(15);
   
 }
