@@ -1,46 +1,25 @@
 import './SpracujData.tsx'
 import './App.css'
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import SpracujData from './SpracujData';
+
 
 export default function Teplota() {
-    let [stupne, setStupne] = useState<string>('*USING UTC TIME*');
-
-
-    /*let select1 = document.querySelector("#select");
-    let optiona = document.querySelector("#firstT");
-    if(select1= )
+    const [stupne, setStupne] = useState("*USING UTC TIME*");
+     function urobZmenu(e: ChangeEvent<HTMLSelectElement>)
     {
-
+       setStupne(e.target.value)
     }
-    select1.addEventListener('change',(stupne) => 
-        {
-        let prepis = document.querySelector("#ow");
-        prepis.textContent = ` ${stupne}  °C`;});*/
-   
-
-    /*if(document.querySelector("#firstT") )
-    {
-        stupne = "15"
-    }
-    else(document.querySelector("#secondT"))
-    {
-        stupne = "13"
-    }*/
-
-
 
     return (
         <div className="DivInput">
             <form id="form">
-                <script>
-                    
-                </script>
-            <select className="inputek" id="select">
-            <option value="*USING UTC TIME*"> Select the Time... </option>
-            <option  id="firstT" value="1" ></option>
-            <option id="secondT" value="2" ></option>
-            <option value="3" ></option>
+            <select onChange={e => urobZmenu(e)} className="inputek" id="select" >
+                <option value='*USING UTC TIME*'> Select the Time... </option>
+                <option  id="firstT" value="1" >čas 1</option>
+                <option id="secondT" value={SpracujData()} >čas 2</option> 
             </select>
+            
             <main id="app-container" className="lokacia">
                 <div id="place"  >
                 <p id="ow">{stupne}</p>
@@ -49,5 +28,4 @@ export default function Teplota() {
                 </form>
         </div>
     );
-
 }
