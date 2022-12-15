@@ -3,7 +3,7 @@ import './App.css'
 
 
 export default function VypisCurrentSky(){
-    const [obloha, setObloha] = useState<string>('');
+    const [obloha, setObloha] = useState<string>('s');
   
 return(
       <p>{obloha}</p>
