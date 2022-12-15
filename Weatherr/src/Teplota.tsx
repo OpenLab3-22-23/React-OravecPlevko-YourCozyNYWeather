@@ -21,7 +21,7 @@ export default function Teplota() {
     
     fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=35.5&lon=-78.5', options)
         .then(response => response.json())
-        .then(response => setStupne(response.data[num].timestamp_utc))
+        .then(response => setStupne(response.data[num].temp+" °C"))
         .catch(err => console.error(err));
     }
      
