@@ -5,25 +5,28 @@ import SpracujData from './SpracujData';
 
 
 
-export default function Teplota() {
-    const [cas, setCas] = useState("'We look (will also look) the same but we're not...'");
-    const [stupne, setStupne] = useState("*USING UTC TIME*");
+export default function Teplota() {   
+    const [cas, setCas] = useState("TEMP 1");
+    const [cas2, setCas2] = useState("TEMP 2");
+    const [stupne, setStupne] = useState("TEMPERATURE");
     async function Api(num:number)
     {
     
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '56ba64173fmshc7e71874c046f26p12d62ajsn8245ba17a524',
+                'X-RapidAPI-Key': '7151a85878mshb32875c0cba7e82p1de453jsn143e8109a919',
                 'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
             }
         };
         
         fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=35.5&lon=-78.5', options)
         .then(response => response.json())
-///.then(response => console.log(response))
-        //.then(response => setCas(response.data[num].timestamp_utc))
-        .then(response => setStupne(response.data[num].temp+" °C"))
+        .then(response => {
+            setCas(response.data[num].timestamp_utc)
+            setStupne(response.data[num].temp+" °C")
+            setCas2(response.data[num].timestamp_utc)})
+            
         .catch(err => console.error(err));
     }
      
@@ -37,8 +40,8 @@ export default function Teplota() {
             <form id="form">
             <select onChange={e => urobZmenu(e)} className="inputek" id="select" >
                 <option disabled selected value="nic"> Select the Time... </option>
-                <option  id="firstT" value="1" >{cas}</option>
-                <option id="secondT" value="2" >{cas}</option> 
+                <option  id="firstT" value="0" >{cas}</option>
+                <option id="secondT" value="1" >{cas2}</option> 
             </select>
             
             <main id="app-container" className="lokacia">
