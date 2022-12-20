@@ -6,9 +6,9 @@ import SpracujData from './SpracujData';
 
 
 export default function Teplota() {   
-    const [cas, setCas] = useState("TEMP 1");
-    const [cas2, setCas2] = useState("TEMP 2");
-    const [stupne, setStupne] = useState("TEMPERATURE");
+    const [cas, setCas] = useState("TEMPERATURE IN LOCAL TIME");
+    const [cas2, setCas2] = useState("TEMPERATURE IN UTC");
+    const [stupne, setStupne] = useState("Temperature");
     async function Api(num:number)
     {
     
@@ -23,7 +23,7 @@ export default function Teplota() {
         fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=35.5&lon=-78.5', options)
         .then(response => response.json())
         .then(response => {
-            setCas(response.data[num].timestamp_utc)
+            setCas(response.data[num].timestamp_local)
             setStupne(response.data[num].temp+" °C")
             setCas2(response.data[num].timestamp_utc)})
             
@@ -41,7 +41,7 @@ export default function Teplota() {
             <select onChange={e => urobZmenu(e)} className="inputek" id="select" >
                 <option disabled selected value="nic"> Select the Time... </option>
                 <option  id="firstT" value="0" >{cas}</option>
-                <option id="secondT" value="1" >{cas2}</option> 
+                <option id="secondT" value="0" >{cas2}</option> 
             </select>
             
             <main id="app-container" className="lokacia">
